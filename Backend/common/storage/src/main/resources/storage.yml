@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.default_batch_fetch_size: 100
+
+---
+spring.config.activate.on-profile: local
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  h2:
+    console:
+      enabled: true
+
+storage:
+  datasource:
+    main:
+      url: jdbc:postgresql://localhost:5432/devlog
+      username: postgres
+      password: postgres
+      driver-class-name: org.postgresql.Driver
+    graph:
+      url: jdbc:neo4j:Server=localhost;Port=7474;User=neo4j;Password=neo4jlocal123;
+      driver-class-name : cdata.jdbc.neo4j.Neo4jDriver
